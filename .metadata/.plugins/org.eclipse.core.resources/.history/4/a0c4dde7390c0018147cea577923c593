@@ -1,0 +1,32 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import java.util.Scanner;
+
+public class Circle
+{
+	private double radius;
+	private double area;
+	
+	Scanner userinput = new Scanner(System.in);
+
+	public void setRadius(double rad)
+	{
+		double r;
+		System.out.print("Radius: ");
+		r = userinput.nextDouble();
+		System.out.println(r);
+		
+	}
+
+	public void calculateArea( )
+	{
+	}
+
+	public void print( )
+	{
+	}
+}

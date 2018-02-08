@@ -1,0 +1,40 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+public class Lab02f
+{
+	public static void main( String[] args )
+   {
+		//add test cases
+		Line a = new Line(1, 9, 14, 2);
+		a.setCoordinates(1, 9, 14, 2);
+		a.calculateSlope();
+		a.print();
+		
+		Line b = new Line(3, 4, 9, 2);
+		b.setCoordinates(3, 4, 9, 2);
+		b.calculateSlope();
+		b.print();
+		
+		Line c = new Line(2, 7, 18, 2);
+		c.setCoordinates(2, 7, 18, 2);
+		c.calculateSlope();
+		c.print();
+		
+		Line d = new Line(1, 9, 14, 2);
+		d.setCoordinates(1, 9, 14, 2);
+		d.calculateSlope();
+		d.print();
+		
+		Line e = new Line(1, 9, 14, 2);
+		e.setCoordinates(1, 9, 14, 2);
+		e.calculateSlope();
+		e.print();
+		
+		
+		
+	}
+}
