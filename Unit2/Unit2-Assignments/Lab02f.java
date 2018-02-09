@@ -8,7 +8,6 @@ public class Lab02f
 {
 	public static void main( String[] args )
    {
-		//add test cases
 		Line a = new Line(1, 9, 14, 2);
 		a.setCoordinates(1, 9, 14, 2);
 		a.calculateSlope();

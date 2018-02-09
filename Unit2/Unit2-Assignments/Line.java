@@ -35,6 +35,6 @@ public class Line
 
 	public void print( )
 	{
-		System.out.println("The slope is: " + slope);
+		System.out.println("The slope is: " + String.format("%.3f", slope));
 	}
 }

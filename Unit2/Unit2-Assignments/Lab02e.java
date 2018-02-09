@@ -8,7 +8,6 @@ public class Lab02e
 {
 	public static void main( String[] args )
    {
-		//add test cases
 		Circle c = new Circle();
 		c.setRadius(4);
 		c.calculateArea();

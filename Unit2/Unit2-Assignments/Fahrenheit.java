@@ -23,7 +23,7 @@ public class Fahrenheit
 
 	public void print()
 	{
-		System.out.println(fahrenheit + " degrees Fahrenheit == " + getCelsius() + " degrees Celsius");
+		System.out.println(String.format("%.2f", fahrenheit) + " degrees Fahrenheit == " + String.format("%.3f", getCelsius()) + " degrees Celsius");
 		System.out.println();
 	}
 }
