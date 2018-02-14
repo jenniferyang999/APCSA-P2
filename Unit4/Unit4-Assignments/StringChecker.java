@@ -37,8 +37,8 @@ public class StringChecker
 
 	public boolean findSubString(String s)
 	{
-		check2 = word.indexOf(s);
-		if (check2 != -1) {
+		check1 = word.indexOf(s);
+		if (check1 != -1) {
 			return true;
 		}
 		return false;

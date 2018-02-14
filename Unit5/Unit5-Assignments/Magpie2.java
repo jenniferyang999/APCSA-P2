@@ -16,6 +16,7 @@ public class Magpie2
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */
+	// to determine priority of responses in reply method, use indexof or lastindexof
 	public String getGreeting()
 	{
 		return "Hello, let's talk.";
@@ -31,7 +32,13 @@ public class Magpie2
 	public String getResponse(String statement)
 	{
 		String response = "";
-		if (statement.indexOf("no") >= 0)
+		statement = statement.toLowerCase();
+		String testString = statement.trim(); 
+		if (testString.length() < 2)
+		{
+			response = "Say something!";
+		}
+		else if (statement.indexOf("no") >= 0)
 		{
 			response = "Why so negative?";
 		}
@@ -42,6 +49,32 @@ public class Magpie2
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (statement.indexOf("dog") >=0 
+				|| statement.indexOf("cat") >=0)
+				{
+					response = "Tell me more about your pets.";
+				}
+		else if (statement.indexOf("Mr.Mauro") >=0 
+				|| statement.indexOf("Mauro") >=0)
+				{
+					response = "Wow, he sounds like a cool teacher!";
+				}
+		else if (statement.indexOf("hi") >=0 
+				|| statement.indexOf("hello") >=0)
+				{
+					response = "What's up?";
+				}
+		else if (statement.indexOf("food") >=0 
+				|| statement.indexOf("eat") >=0
+				|| statement.indexOf("eating") >=0)
+				{
+					response = "What's your favorite food?";
+				}
+		else if (statement.indexOf("okay") >=0 
+				|| statement.indexOf("ok") >=0)
+				{
+					response = "How are you doing?";
+				}
 		else
 		{
 			response = getRandomResponse();
@@ -55,7 +88,7 @@ public class Magpie2
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -76,7 +109,14 @@ public class Magpie2
 		{
 			response = "You don't say.";
 		}
-
+		else if (whichResponse == 4)
+		{
+			response = "Could you repeat that?";
+		}
+		else if (whichResponse == 5)
+		{
+			response = "That's cool!";
+		}
 		return response;
 	}
 }
