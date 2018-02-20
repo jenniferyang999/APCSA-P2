@@ -1,0 +1,23 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import static java.lang.System.*;
+
+public class Lab09f
+{
+	public static void main( String args[] )
+	{
+		//add test cases
+		String c = "hellooadfas";
+		c = c.substring(0,6) + c.substring(7,c.length());
+		out.println(c);
+		out.println(c.indexOf("a"));
+		
+
+		
+											
+	}
+}
