@@ -1,0 +1,108 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class - 
+//Lab  -
+
+import static java.lang.System.*;
+import java.util.Random;
+
+
+public class Triples
+{
+   private int number, p1, p2, p3;
+
+	public Triples()
+	{
+		//this(0); //calls another method in here 	
+	}
+
+	public Triples(int num)
+	{
+		number = num;
+	}
+
+	public void setNum(int num)
+	{
+		number = num;
+		Random test = new Random();
+		int r1 = test.nextInt(number) + 1;
+		int r2 = test.nextInt(number) + 1;
+		int r3 = test.nextInt(number) + 1;
+		if (r1 > r2 && r1 > r3) {
+			p1 = r1;
+			if (r3 > r2) {
+				p3 = r3;
+				p2 = r2;
+			}
+			else {
+				p3 = r2;
+				p2 = r3;
+			}
+		}
+		else if (r2 > r3 && r2 > r1) {
+			p1 = r2;
+			if (r3 > r1) {
+				p3 = r3;
+				p2 = r1;
+			}
+			else {
+				p3 = r1;
+				p2 = r3;
+			}
+		}
+		else if (r3 > r2 && r3 > r1) {
+			p1 = r3;
+			if (r2 > r1) {
+				p3 = r2;
+				p2 = r1;
+			}
+			else {
+				p3 = r1;
+				p2 = r2;
+			}
+		}
+		out.print("1" + r1);
+		out.print("2" + r2);
+		out.print("3" + r3);
+		out.print("1" + p1);
+		out.print("2" + p2);
+		out.print("3" + p3);
+
+	}
+	
+	private int greatestCommonFactor(int a, int b, int c)
+	{
+		//int max = 0;
+		int a1 = a;
+		int b1 = b;
+	   while ((a != 0 && b != 0) && (c != 0))
+       {
+           if (a >= b && a >=c)
+           {
+               int a1 = a1 - b1;
+               a = a 
+           }
+           else if ()
+               b = b - a;
+       }
+       if (a == 0) {
+	     return 1;
+       }
+       else {
+     	  return 1;
+       }
+	}
+
+	public String toString()
+	{
+		String output="";
+
+
+
+
+
+
+		return output+"\n";
+	}
+}

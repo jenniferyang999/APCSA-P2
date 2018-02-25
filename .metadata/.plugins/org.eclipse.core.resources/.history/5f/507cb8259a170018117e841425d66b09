@@ -1,0 +1,32 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class - 
+//Lab  -
+
+import static java.lang.System.*;
+
+public class Lab11j
+{
+   public static void main(String args[])
+   {
+	   int a = 45, b = 9;
+	   while (a != 0 && b != 0)
+       {
+           if (a >= b)
+           {
+               a = a - b;
+           }
+           else
+               b = b - a;
+       }
+       if (a == 1) 
+       {
+    	  out.print(b);
+       }
+       else if (b==1)
+       {
+     	  out.print(a);
+       }
+	}
+}

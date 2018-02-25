@@ -1,0 +1,57 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import static java.lang.System.*;
+
+public class TriangleThree
+{
+   private int size, r;
+   private String letter, output;
+
+	public TriangleThree()
+	{
+	}
+
+	public TriangleThree(int count, String let)
+	{
+		size = count;
+		letter = let;
+	}
+
+	public void setTriangle( String let, int sz )
+	{
+		size = sz;
+		letter = let;
+		
+	}
+
+	public String getLetter()
+	{
+		output="";
+		for (int i = 1; i <= size; i++)
+		{
+		   for (int j = 1; j <= 1; j++) 
+		   {
+		       output = output + " ";
+		   }   
+
+		   for (int k = 1; k <= 1; k++)
+		   {   
+		       output = output + letter;
+		       return letter;
+		   }   
+
+		  return output = output + "\n";
+		}
+		return null;
+	}
+
+	public String toString()
+	{
+		String output="";
+		return output+"\n";
+	}
+}
