@@ -1,0 +1,52 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import static java.lang.System.*;
+
+public class Lab14i
+{
+	public static void main( String args[] )
+	{
+		RomanNumeral test = new RomanNumeral("XLIX");
+
+		RomanNumeral test1 = new RomanNumeral(10);
+		out.println("10 is " + test1.toString());
+
+		test2.setNumber(100);
+		out.println("100 is " + test2.toString());
+
+		test2.setNumber(1000);
+		out.println("1000 is " + test2.toString());
+
+		test2.setNumber(2500);
+		out.println("2500 is " + test2.toString());
+
+		test2 = new RomanNumeral(1500);
+		out.println("1500 is " + test2.toString());
+
+		test2.setNumber(23);
+		out.println("23 is " + test2.toString());
+
+		test2.setNumber(38);
+		out.println("38 is " + test2.toString());
+
+		test2.setNumber(49);
+		out.println("49 is " + test2.toString());
+
+		
+		test2.setRoman("LXXVII");
+		out.println("LXXVII is " + test2.getNumber() + "\n");
+
+		test2.setRoman("XLIX");
+		out.println("XLIX is " + test2.getNumber() + "\n");
+
+		test2.setRoman("XX");
+		out.println("XX is " + test2.getNumber() + "\n");
+
+		test2.setRoman("XLIX");
+		out.println("XLIX is " + test2.getNumber() + "\n");
+	}
+}
