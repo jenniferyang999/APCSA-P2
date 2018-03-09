@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 0 elements to &apos;Unit10/Unit10_InstructionExamples/(default package)&apos;&#x0D;&#x0A;- Destination element: &apos;Unit10/Unit10_InstructionExamples/(default package)&apos;" description="Copy compilation units" destination="=Unit10/Unit10_InstructionExamples&lt;" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1520531321480" units="0" version="1.0"/>
+</session>
