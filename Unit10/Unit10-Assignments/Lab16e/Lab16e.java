@@ -22,7 +22,19 @@ public class Lab16e
 		out.println("\n");
 		out.println(test);
 
+		Histogram test1 = new Histogram(new char[]{'5','b','c'},"lab16e2.dat");
+		test1.loadAndAnalyzeFile();
+		out.println("Letter occurring most : "+test1.mostFrequent());
+		out.println("Letter occurring least : "+test1.leastFrequent());
+		out.println("\n");
+		out.println(test1);
+		
+		Histogram test2 = new Histogram(new char[]{'5','b','c'},"lab16e2.dat");
+		test2.loadAndAnalyzeFile();
+		out.println("Letter occurring most : "+test2.mostFrequent());
+		out.println("Letter occurring least : "+test2.leastFrequent());
+		out.println("\n");
+		out.println(test2);
 
-		//more test cases
 	}
 }

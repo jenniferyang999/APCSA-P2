@@ -36,7 +36,7 @@ public class MadLib
 		loadAdjectives();
 		
 		try{
-			Scanner file = new Scanner(new File(filething));
+			Scanner file = new Scanner(new File(fileName));
 			while (file.hasNext())
 			{
 				String thing = file.next();
