@@ -1,0 +1,96 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import java.util.Arrays;
+import java.util.Scanner;
+import static java.lang.System.*;
+import static java.util.Arrays.*;
+
+public class Grades
+{
+	private double[] grades;
+	private double thing, size;
+	
+	public Grades()
+	{
+		setGrades("");
+	}
+	
+	public Grades(String gradeList)
+	{
+		setGrades(gradeList);		
+	}
+	
+	public void setGrades(String gradeList)
+	{
+		Scanner idea = new Scanner(gradeList);
+		int la = idea.nextInt();
+		grades = new double[la];
+		int counter = 1;
+		while (idea.hasNextInt())
+		{
+			thing = idea.nextInt();
+			grades[counter] = thing;
+			counter = counter + 1;
+		}
+	}
+	
+	public void setGrade(int spot, double grade)
+	{
+		grade = grades[spot];
+	}
+	
+	public double getSum()
+	{
+		size = grades[0];
+		double sum=0.0;
+		for (int i = 0; i < grades.length; i++)
+		{
+			sum = sum + grades[i];
+		}
+		
+		return sum;
+	}
+	
+	public double getLowGrade()
+	{
+		double low = Double.MAX_VALUE;
+		for (int i = 0; i < grades.length; i++)
+		{
+			if (grades[i] <= low)
+			{
+				low = grades[i];
+			}
+		}
+		return low;
+	}
+	
+	public double getHighGrade()
+	{
+		double high = Double.MIN_VALUE;
+		for (int i = 0; i < grades.length; i++)
+		{
+			if (grades[i] >= high)
+			{
+				high = grades[i];
+			}
+		}
+
+		return high;
+	}
+	
+	public int getNumGrades()
+	{
+		return grades.length;
+	}
+	
+	public String toString()
+	{
+		String output="";
+
+		return output;
+	}	
+}
