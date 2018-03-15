@@ -20,28 +20,25 @@ public class Class
 	public Class()
 	{
 		name="";
-		studentList = new ArrayList<Student>();
+		studentList = new ArrayList<Student>(0);
 	}
 	
 	public Class(String name, int stuCount)
 	{	
 		this.name = name;
-		studentList = new ArrayList<Student>();
+		studentList = new ArrayList<Student>(stuCount);
 	}
 	
 	public void addStudent(int stuNum, Student s)
 	{
 		student = s;
-		/*for (int i = 0; i < studentList.size(); i++)
+		for (int i = 0; i < studentList.size(); i++)
 		{
 			if (i == stuNum)
 			{
 				studentList.set(i, student);
 			}
 		}
-		*/
-		studentList.add(stuNum, student);
-
 	}
 	
 	public String getClassName()
@@ -65,7 +62,7 @@ public class Class
 		{
 			if (k == stuNum)
 			{
-				return studentList.get(k).getAverage();
+				return getStudentAverage(getStudentName(stuNum));
 			}
 		}
 		return 0.0;
@@ -80,7 +77,7 @@ public class Class
 			//String thing = student.getName();
 			if (studentList.get(i).getName().equals(stuName))
 			{
-				return getStudentAverage(i);
+				return student.getAverage();
 			}
 		}
 		return 0.0;
@@ -114,8 +111,8 @@ public class Class
 			}
 		}
 	*/
-		sortStudentsLowtoHigh();
-		hName = getStudentName(studentList.size() - 1);
+		sortStudentsLowtoHigh(studentList);
+		hName = studentList.get(studentList.size() - 1).getName();
 		return hName;
 	}
 
@@ -134,8 +131,8 @@ public class Class
 			}
 		}*/
 		
-		sortStudentsLowtoHigh();
-		hName = getStudentName(0);
+		sortStudentsLowtoHigh(studentList);
+		hName = studentList.get(0).getName();
 		return hName;
 	}
 	
@@ -154,21 +151,21 @@ public class Class
 		return output;
 	}
 	
-	public ArrayList<Student> sortStudentsLowtoHigh()
+	public ArrayList<Student> sortStudentsLowtoHigh(ArrayList<Student> listofstudents)
 	{
-		for(int i = 0; i < studentList.size(); i++) 
+		for(int i = 0; i < listofstudents.size(); i++) 
 		{
-			for(int j = 0; j < studentList.size()-1; j++) 
+			for(int j = 0; j < listofstudents.size()-1; j++) 
 			{
-				if(studentList.get(j).compareTo(studentList.get(j+1)) == 0) //if second one is less than first one == true
+				if(listofstudents.get(j).compareTo(listofstudents.get(j+1)) == 0) //if second one is less than first one == true
 				{
-					Student holdthing = studentList.get(j);
-					studentList.set(j, studentList.get(j+1)); //moves second one lower
-					studentList.set(j+1, holdthing);   //moves first one higher
+					Student holdthing = listofstudents.get(j);
+					listofstudents.set(j, listofstudents.get(j+1)); //moves second one lower
+					listofstudents.set(j+1, holdthing);   //moves first one higher
 				}
 			}
 		}
-		return studentList;
+		return listofstudents;
 	}
 	
 	public String toString()
@@ -176,7 +173,7 @@ public class Class
 		String output=""+getClassName()+"\n";
 		for (int i = 0; i < studentList.size(); i++)
 		{
-			output = output + studentList.get(i) + " " + getStudentAverage(i) + "\n";
+			output = output + student + "\t " + studentList.get(i) + " " + getStudentAverage(i) + "\n";
 		}
 		return output;
 	}  	

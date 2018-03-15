@@ -8,12 +8,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.util.Arrays.*;
-import java.util.ArrayList;
 
 public class Grades
-{	
-	//private double[] grades;
-	private ArrayList<Double> grades;
+{
+	private double[] grades;
+	private double thing, size;
 	
 	public Grades()
 	{
@@ -28,43 +27,36 @@ public class Grades
 	public void setGrades(String gradeList)
 	{
 		Scanner idea = new Scanner(gradeList);
-		/*if (idea.hasNext())
+		if (idea.hasNext())
 		{
 			int la = idea.nextInt();
 			grades = new double[la];
 
 		}
-		*/
-		int la = idea.nextInt();
-		grades = new ArrayList<Double>(la);
 		if (idea.hasNext())
 		{
 			idea.next();
 		}
-		/*for (int j = 0; j < grades.size(); j++)
+		for (int j = 0; j < grades.length; j++)
 		{
 			
-			grades.s(idea.nextDouble());
+			grades[j] = idea.nextDouble();
 
-		}*/
-		while (idea.hasNextDouble())
-		{
-			grades.add(idea.nextDouble());
 		}
 	}
 	
 	public void setGrade(int spot, double grade)
 	{
-		grades.set(spot, grade);
+		grade = grades[spot];
 	}
 	
 	public double getSum()
 	{
-		//size = grades[0];
+		size = grades[0];
 		double sum=0.0;
-		for (int i = 0; i < grades.size(); i++)
+		for (int i = 0; i < grades.length; i++)
 		{
-			sum = sum + grades.get(i);
+			sum = sum + grades[i];
 		}
 		
 		return sum;
@@ -73,11 +65,11 @@ public class Grades
 	public double getLowGrade()
 	{
 		double low = Double.MAX_VALUE;
-		for (int i = 0; i < grades.size(); i++)
+		for (int i = 0; i < grades.length; i++)
 		{
-			if (grades.get(i) <= low)
+			if (grades[i] <= low)
 			{
-				low = grades.get(i);
+				low = grades[i];
 			}
 		}
 		return low;
@@ -86,11 +78,11 @@ public class Grades
 	public double getHighGrade()
 	{
 		double high = Double.MIN_VALUE;
-		for (int i = 0; i < grades.size(); i++)
+		for (int i = 0; i < grades.length; i++)
 		{
-			if (grades.get(i) >= high)
+			if (grades[i] >= high)
 			{
-				high = grades.get(i);
+				high = grades[i];
 			}
 		}
 
@@ -99,14 +91,14 @@ public class Grades
 	
 	public int getNumGrades()
 	{
-		return grades.size();
+		return grades.length;
 	}
 	
 	public String toString()
 	{
 		String output="";
-		for (int i = 0; i < grades.size(); i++){
-			output = output + grades.get(i) + " ";
+		for (int i = 0; i < grades.length; i++){
+			output = output + grades[i] + " ";
 		}
 		return output;
 	}	

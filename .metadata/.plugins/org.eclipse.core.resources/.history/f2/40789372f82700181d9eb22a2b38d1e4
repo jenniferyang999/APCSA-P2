@@ -41,15 +41,11 @@ public class Grades
 		{
 			idea.next();
 		}
-		/*for (int j = 0; j < grades.size(); j++)
+		for (int j = 0; j < grades.size(); j++)
 		{
 			
-			grades.s(idea.nextDouble());
-
-		}*/
-		while (idea.hasNextDouble())
-		{
 			grades.add(idea.nextDouble());
+
 		}
 	}
 	

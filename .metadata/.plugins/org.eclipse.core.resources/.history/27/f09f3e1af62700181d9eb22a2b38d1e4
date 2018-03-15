@@ -20,28 +20,25 @@ public class Class
 	public Class()
 	{
 		name="";
-		studentList = new ArrayList<Student>();
+		studentList = new ArrayList<Student>(0);
 	}
 	
 	public Class(String name, int stuCount)
 	{	
 		this.name = name;
-		studentList = new ArrayList<Student>();
+		studentList = new ArrayList<Student>(stuCount);
 	}
 	
 	public void addStudent(int stuNum, Student s)
 	{
 		student = s;
-		/*for (int i = 0; i < studentList.size(); i++)
+		for (int i = 0; i < studentList.size(); i++)
 		{
 			if (i == stuNum)
 			{
 				studentList.set(i, student);
 			}
 		}
-		*/
-		studentList.add(stuNum, student);
-
 	}
 	
 	public String getClassName()
@@ -65,7 +62,7 @@ public class Class
 		{
 			if (k == stuNum)
 			{
-				return studentList.get(k).getAverage();
+				return getStudentAverage(getStudentName(stuNum));
 			}
 		}
 		return 0.0;
@@ -80,7 +77,7 @@ public class Class
 			//String thing = student.getName();
 			if (studentList.get(i).getName().equals(stuName))
 			{
-				return getStudentAverage(i);
+				return student.getAverage();
 			}
 		}
 		return 0.0;
@@ -135,7 +132,7 @@ public class Class
 		}*/
 		
 		sortStudentsLowtoHigh();
-		hName = getStudentName(0);
+		hName = studentList.get(0).getName();
 		return hName;
 	}
 	
@@ -154,7 +151,7 @@ public class Class
 		return output;
 	}
 	
-	public ArrayList<Student> sortStudentsLowtoHigh()
+	public void sortStudentsLowtoHigh()
 	{
 		for(int i = 0; i < studentList.size(); i++) 
 		{
@@ -168,7 +165,7 @@ public class Class
 				}
 			}
 		}
-		return studentList;
+		//return listofstudents;
 	}
 	
 	public String toString()
@@ -176,7 +173,7 @@ public class Class
 		String output=""+getClassName()+"\n";
 		for (int i = 0; i < studentList.size(); i++)
 		{
-			output = output + studentList.get(i) + " " + getStudentAverage(i) + "\n";
+			output = output + student + "\t " + studentList.get(i) + " " + getStudentAverage(i) + "\n";
 		}
 		return output;
 	}  	

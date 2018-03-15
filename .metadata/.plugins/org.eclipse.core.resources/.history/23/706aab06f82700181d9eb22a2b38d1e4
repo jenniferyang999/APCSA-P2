@@ -37,15 +37,17 @@ public class GradeBookFileRunner
 			Student student = new Student(thing1, thing2);
 			c.get(0).addStudent(i, student);
 		}
-		
 		c.get(0).sortStudentsLowtoHigh();
 		out.print(c.get(0));
 
 		out.println();
-		out.println("Failure List = " + c.get(0).getFailureList(70.00));
-		out.println("Highest Average = " + c.get(0).getStudentWithHighestAverage());
-		out.println("Lowest Average = " + c.get(0).getStudentWithLowestAverage());
-		out.println("Class Average = " + c.get(0).getClassAverage());
+		out.println("Failure List = " + test.getFailureList(70.00));
+		out.println("Highest Average = " + test.getStudentWithHighestAverage());
+		out.println("Lowest Average = " + test.getStudentWithLowestAverage());
+		out.println("Class Average = " + test.getClassAverage());
+
+
+
 
 	}		
 }

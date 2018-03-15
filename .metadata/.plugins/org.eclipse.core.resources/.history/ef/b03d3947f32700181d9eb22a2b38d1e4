@@ -88,8 +88,10 @@ public class Student implements Comparable<Student>
 		{
 			return 0;
 		}
-		return -1;
-
+		else 
+		{
+			return 9;
+		}
 	}
 	
 	public boolean equals(Student blah)
@@ -104,5 +106,5 @@ public class Student implements Comparable<Student>
 	public String toString()
 	{
 		return myName + " = " + myGrades;
-	}
+	}	
 }

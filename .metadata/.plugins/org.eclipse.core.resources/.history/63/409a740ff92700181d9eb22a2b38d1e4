@@ -36,20 +36,18 @@ public class Grades
 		}
 		*/
 		int la = idea.nextInt();
-		grades = new ArrayList<Double>(la);
+		grades = new ArrayList<Double>();
 		if (idea.hasNext())
 		{
 			idea.next();
 		}
-		/*for (int j = 0; j < grades.size(); j++)
-		{
-			
-			grades.s(idea.nextDouble());
+		out.println(idea.nextDouble());
 
-		}*/
-		while (idea.hasNextDouble())
+		for (int j = 0; j < grades.size(); j++)
 		{
+			out.println(idea.nextDouble());
 			grades.add(idea.nextDouble());
+
 		}
 	}
 	

@@ -26,22 +26,19 @@ public class Class
 	public Class(String name, int stuCount)
 	{	
 		this.name = name;
-		studentList = new ArrayList<Student>();
+		studentList = new ArrayList<Student>(stuCount);
 	}
 	
 	public void addStudent(int stuNum, Student s)
 	{
 		student = s;
-		/*for (int i = 0; i < studentList.size(); i++)
+		for (int i = 0; i < studentList.size(); i++)
 		{
 			if (i == stuNum)
 			{
 				studentList.set(i, student);
 			}
 		}
-		*/
-		studentList.add(stuNum, student);
-
 	}
 	
 	public String getClassName()
@@ -135,7 +132,7 @@ public class Class
 		}*/
 		
 		sortStudentsLowtoHigh();
-		hName = getStudentName(0);
+		hName = getStudentName(studentList.size() - 1);
 		return hName;
 	}
 	
@@ -176,7 +173,7 @@ public class Class
 		String output=""+getClassName()+"\n";
 		for (int i = 0; i < studentList.size(); i++)
 		{
-			output = output + studentList.get(i) + " " + getStudentAverage(i) + "\n";
+			output = output + student + "\t " + studentList.get(i) + " " + getStudentAverage(i) + "\n";
 		}
 		return output;
 	}  	

@@ -135,7 +135,7 @@ public class Class
 		}*/
 		
 		sortStudentsLowtoHigh();
-		hName = getStudentName(0);
+		hName = getStudentName(studentList.size() - 1);
 		return hName;
 	}
 	

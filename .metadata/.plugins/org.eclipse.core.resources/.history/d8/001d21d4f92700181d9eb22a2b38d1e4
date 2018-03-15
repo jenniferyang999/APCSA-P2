@@ -135,7 +135,7 @@ public class Class
 		}*/
 		
 		sortStudentsLowtoHigh();
-		hName = getStudentName(0);
+		hName = getStudentName(studentList.size() - 1);
 		return hName;
 	}
 	
@@ -174,9 +174,10 @@ public class Class
 	public String toString()
 	{
 		String output=""+getClassName()+"\n";
+		out.println(studentList.size());
 		for (int i = 0; i < studentList.size(); i++)
 		{
-			output = output + studentList.get(i) + " " + getStudentAverage(i) + "\n";
+			output = output + student + "\t " + studentList.get(i) + " " + getStudentAverage(i) + "\n";
 		}
 		return output;
 	}  	
