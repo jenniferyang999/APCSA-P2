@@ -35,8 +35,7 @@ public class Grades
 
 		}
 		*/
-		int la = idea.nextInt();
-		grades = new ArrayList<Double>(la);
+		grades = new ArrayList<Double>();
 		if (idea.hasNext())
 		{
 			idea.next();
