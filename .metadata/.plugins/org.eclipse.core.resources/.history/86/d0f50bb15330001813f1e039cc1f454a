@@ -1,0 +1,69 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class - 
+//Lab  -
+
+import java.util.Scanner;
+import static java.lang.System.*;
+
+public class FancyWord
+{
+	private char[][] mat;
+	private String word;
+
+	public FancyWord()
+	{
+		word = "";
+	}
+
+   public FancyWord(String s)
+	{
+	   word = s;
+	   mat = new char[word.length()][word.length()];
+	   //Scanner keyboard = new Scanner(word);
+	   for (int i = 0; i < word.length(); i++)
+		{
+				mat[0][i] = word.charAt(i);
+
+				mat[i][i] = word.charAt(i);
+				mat[i][2] = word.charAt(i);
+
+
+				/*for (int k = 0; k < word.length(); k++)
+				{
+					if (k % 2 == 0)
+					{
+						mat[i][k] = word.charAt(0);
+					}
+					else
+					{
+						mat[i][k] = word.charAt(k);
+					}
+					*/
+							
+			}
+				
+			
+			//mat[word.length()][i] = word.charAt(i); 
+		}
+
+	
+
+	public String toString()
+	{
+		String output="";
+		for (int i = 0; i < mat.length; i++)
+		{
+			for (int j = 0; j < mat[0].length; j++)
+			{
+				output = output + mat[i][j] ;
+			}
+			output+="\n";
+		}
+		
+
+
+		return output+"\n\n";
+	}
+}
