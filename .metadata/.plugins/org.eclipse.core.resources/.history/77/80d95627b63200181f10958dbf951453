@@ -1,0 +1,47 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Collections;
+import static java.lang.System.*;
+
+public class FancyWords
+{
+	private String[] wordRay;
+	private String word;
+
+	public FancyWords(String sentence)
+	{
+
+	}
+
+	public void setWords(String sentence)
+	{
+		word = sentence;
+		for (int i = 0; i < word.length(); i++)
+		{
+			wordRay[i] = String.valueOf(word.charAt(i));
+		}
+	}
+
+	public String toString()
+	{
+		String output="";
+		int max = Integer.MIN_VALUE;
+		for (int i = 0; i < wordRay.length; i++)
+		{
+			output = output + wordRay[i];
+
+		}
+
+
+
+
+
+		return output+"\n\n";
+	}
+}
