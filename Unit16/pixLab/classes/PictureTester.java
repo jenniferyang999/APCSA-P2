@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -91,7 +93,7 @@ public class PictureTester
 	}
 	
 	public static void testGrayscale() {
-		Picture beach = new Picture("C:\\Users\\JY\\Desktop\\APCSA-P2\\Unit16\\pixLab\\images\\beach.jpg");
+		Picture beach = new Picture("C:\\Users\\JY\\Desktop\\APCSA-P2\\Unit16\\pixLab\\images\\gorge.jpg");
 		beach.explore();
 		beach.gray();
 		beach.explore();
@@ -138,7 +140,33 @@ public class PictureTester
 		water.copy2(water, 50, 150);
 		water.explore();
 	}
+	
+	public static void hiddenPicture() {
+		Picture water = new Picture("C:\\Users\\JY\\Desktop\\APCSA-P2\\Unit16\\pixLab\\images\\beach.jpg");
+		Picture apple = new Picture("C:\\Users\\JY\\Desktop\\APCSA-P2\\Unit16\\pixLab\\images\\apple2.jpg");
+		water.explore();
+		water.encode(apple);
+		water.explore();
+		water.decode().explore();
+		//water.explore();
+		
+
+		
+	}
   
+	public static void testBlur(int x, int y, int w, int h, int n) {
+		Picture water = new Picture("C:\\Users\\JY\\Desktop\\APCSA-P2\\Unit16\\pixLab\\images\\beach.jpg");
+		water.explore();
+		for (int i = 0; i < n; i++)
+		{
+			water.blur(x, y, w, h);
+		}
+		water.explore();
+	}
+	
+	
+	
+	  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -146,18 +174,20 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	hiddenPicture();
+	 //testBlur(200, 200, 100, 100, 5);
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
-    testFixUnderwater();
+    //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
-    testMirrorArms();
+    //testMirrorArms();
     //testMirrorGull();
-    testMirrorDiagonal();
+    //testMirrorDiagonal();
     //testCollage();
     //testCopy();
     //testCopy2();

@@ -1,0 +1,65 @@
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Blocks
+{
+	private int xPos;
+	private int yPos;
+	private int width;
+	private int height;
+
+	private Color color;
+	private List<Block> arrayblocks;
+	public Blocks()
+	{
+		
+		arrayblocks = new ArrayList<Block>();
+		int x = 0, y = 0;
+		for(int i = 0; i <= 16; i++)
+		{
+
+			while (x <= 800)
+			{
+				if (x != 0)
+				{
+					arrayblocks.add(new Block(x + 5, y, 50, 50, Color.MAGENTA));
+					x = x + 60;
+
+				}
+				else{
+					arrayblocks.add(new Block(x + 8, y, 50, 50, Color.MAGENTA));
+					x = x + 60;
+
+				}
+
+
+			}
+		}
+
+	}
+	
+	public void drawAll( Graphics window )
+	{
+		for(Block a : arrayblocks)
+		{
+			a.draw(window);
+		
+		}
+	}
+
+	//add a toString() method  - x , y , width, height, color
+	public String toString()
+	{
+		String output = "";
+		return output;
+	}
+
+}

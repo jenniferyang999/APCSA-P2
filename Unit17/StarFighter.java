@@ -4,7 +4,7 @@
 //Class -
 //Lab  -
 
-import javax.swing.JFrame;
+import javax.swing.JFrame;import java.awt.Color;
 import java.awt.Component;
 
 public class StarFighter extends JFrame
@@ -16,7 +16,6 @@ public class StarFighter extends JFrame
 	{
 		super("STARFIGHTER");
 		setSize(WIDTH,HEIGHT);
-
 		OuterSpace theGame = new OuterSpace();
 		((Component)theGame).setFocusable(true);
 

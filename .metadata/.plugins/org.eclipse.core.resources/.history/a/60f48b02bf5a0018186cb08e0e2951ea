@@ -1,0 +1,445 @@
+
+//� A+ Computer Science  -  www.apluscompsci.com
+//Name -
+//Date -
+//Class -
+//Lab  -
+
+import static java.lang.Character.toUpperCase;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pong extends Canvas implements KeyListener, Runnable {
+	private Ball ball, ball2;
+	private Paddle leftPaddle;
+	private Paddle rightPaddle;
+	private Blocks stuff;
+	private boolean[] keys;
+	private BufferedImage back;
+	private int leftScore;
+	private int rightScore = 0;
+	private Blocks stuff2;
+	private Wall right;
+	private Wall left;
+	private Wall top; 
+	private Wall bottom;
+	private int counter = 0;
+
+
+	public Pong() {
+		// set up all variables related to the game
+
+		keys = new boolean[4];
+		stuff = new Blocks();
+		// instantiate a Ball
+		//ball = new Ball();
+		//ball2 = new BlinkyBall();
+		//ball = new Ball(100,90);		
+		//ball = new Ball(100,100,25,25);		
+		ball2 = new Ball(200, 200, 10, 10, Color.YELLOW, 4, 4);
+		ball = new Ball(350,350,10,10,Color.ORANGE,6,6);
+		// instantiate a left Paddle
+		ball.setColor(Color.ORANGE);
+		ball.setXSpeed(2);
+		ball.setYSpeed(2);
+		stuff = new Blocks();
+		// instantiate a right Paddle
+		rightPaddle = new Paddle(300, 300, 40, 40, Color.GREEN, 6);
+
+		
+		right = new Wall(0, 0, 50, 800);
+		left = new Wall(0, 0, 800, 10);
+		top = new Wall(0,0,800,10);
+		bottom = new Wall(0, 560, 800, 25);
+
+		setBackground(Color.WHITE);
+		setVisible(true);
+
+		new Thread(this).start();
+		addKeyListener(this); // starts the key thread to log key strokes
+	}
+
+
+	public void update(Graphics window) {
+		paint(window);
+	}
+
+	public void paint(Graphics window) {
+
+		// set up the double buffering to make the game animation nice and
+		// smooth
+		Graphics2D twoDGraph = (Graphics2D) window;
+
+		// take a snap shop of the current screen and same it as an image
+		// that is the exact same width and height as the current screen if(back
+		// == null)
+		back = (BufferedImage) (createImage(getWidth(), getHeight()));
+
+		// create a graphics reference to the back ground image
+		// we will draw all changes on the background image
+		Graphics graphToBack = back.createGraphics();
+
+		ball.moveAndDraw(graphToBack);
+		//leftPaddle.draw(graphToBack);
+		rightPaddle.draw(graphToBack, Color.GREEN);
+		stuff.drawAll(graphToBack);
+
+
+		graphToBack.setColor(Color.MAGENTA);
+		graphToBack.drawString("Level 1", 440, 440);
+		//graphToBack.drawString("Left score : " + leftScore, 240, 460);
+
+		
+		if (rightPaddle.didCollideBottom(bottom) || rightPaddle.didCollideTop(top))
+		{
+			if(rightPaddle.didCollideBottom(bottom))
+			{
+				rightPaddle.moveUpAndDraw(graphToBack);
+			}
+			if(rightPaddle.didCollideTop(top))
+			{
+				rightPaddle.moveDownAndDraw(graphToBack); 
+			}
+		}
+		
+		
+		
+		if (ball.getY() <= 5) {
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		if (ball.getY() >= 580) {
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		
+		if (ball.getX() <= 5) {
+			ball.setXSpeed(-ball.getXSpeed());
+		}
+		if (ball.getX() >= 770) {
+			ball.setXSpeed(-ball.getXSpeed());
+		}
+		
+		
+		if (ball.didCollideLeftPaddle(rightPaddle)) {
+			ball.setXSpeed(-ball.getXSpeed());
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		if (ball.didCollideRightPaddle(rightPaddle)) {
+			ball.setXSpeed(-ball.getXSpeed());
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		if (ball.didCollideBottomPaddle(rightPaddle)) {
+			ball.setXSpeed(ball.getXSpeed());
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		if (ball.didCollideTopPaddle(rightPaddle)) {
+			ball.setXSpeed(ball.getXSpeed());
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		
+		if (rightPaddle.didCollideBottom(bottom) || rightPaddle.didCollideTop(top))
+		{
+			if(rightPaddle.didCollideBottom(bottom))
+			{
+				rightPaddle.moveUpAndDraw(graphToBack);
+			}
+			if(rightPaddle.didCollideTop(top))
+			{
+				rightPaddle.moveDownAndDraw(graphToBack);
+			}
+		}
+		
+		if (ball.didCollideBottom(bottom) || ball.didCollideTop(top))
+		{
+			ball.setXSpeed(ball.getXSpeed());
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		
+		if (ball.didCollideRight(right) || ball.didCollideLeft(left))
+		{
+			ball.setXSpeed(-ball.getXSpeed());
+			ball.setYSpeed(ball.getYSpeed());
+		}
+		
+	
+		for (int i = 0; i < stuff.returnList().size(); i++)
+		{
+			if (ball.didCollideLeft(stuff.returnList().get(i)))
+			{
+				ball.setXSpeed(-ball.getXSpeed());
+				ball.setYSpeed(-ball.getYSpeed());
+				
+				stuff.returnList().get(i).setY(1000);
+				stuff.returnList().remove(i);
+
+				rightScore++;
+				if (rightScore == 7)
+				{
+					
+					int x = 0, y = 0;
+					for(int j = 0; j < 52; j++)
+					{
+						stuff.returnList().add(new Block(x, y, 25, 25, Color.MAGENTA));
+						x = x + 30;
+						if(x > 780)
+						{
+							x = 20;
+							y = y + 50;
+						}
+					}
+					stuff.drawAll(graphToBack);
+					setBackground(Color.BLACK);
+
+					graphToBack.fillRect(300, 300, 30, 30);
+					graphToBack.drawString("Level 2", 300, 300);
+
+				}
+				
+				}
+			
+		
+			}
+	
+		for (int i = 0; i < stuff.returnList().size(); i++)
+		{
+			if (ball.didCollideRight(stuff.returnList().get(i)))
+			{	ball.setXSpeed(-ball.getXSpeed());
+				ball.setYSpeed(-ball.getYSpeed());
+				stuff.returnList().get(i).setY(1000);
+				stuff.returnList().remove(i);
+
+				rightScore++;
+				if (rightScore == 7)
+				{
+
+
+					
+					int x = 0, y = 0;
+					for(int j = 0; j < 52; j++)
+					{
+						stuff.returnList().add(new Block(x, y, 25, 25, Color.MAGENTA));
+						x = x + 30;
+						if(x > 780)
+						{
+							x = 20;
+							y = y + 50;
+						}
+					}
+					stuff.drawAll(graphToBack);
+					setBackground(Color.BLACK);
+
+					graphToBack.fillRect(300, 300, 30, 30);
+					graphToBack.drawString("Level 2", 300, 300);
+
+				}
+				
+			}
+			
+		}
+		for (int i = 0; i < stuff.returnList().size(); i++)
+		{
+			if (ball.didCollideBottom(stuff.returnList().get(i)))
+			{
+				ball.setXSpeed(-ball.getXSpeed());
+				ball.setYSpeed(-ball.getYSpeed());
+				stuff.returnList().get(i).setY(1000);
+				stuff.returnList().remove(i);
+
+
+				rightScore++;
+				
+				if (rightScore == 7)
+				{
+
+					int x = 0, y = 0;
+					for(int j = 0; j < 52; j++)
+					{
+						stuff.returnList().add(new Block(x, y, 25, 25, Color.MAGENTA));
+						x = x + 30;
+						if(x > 780)
+						{
+							x = 20;
+							y = y + 50;
+						}
+					}
+					stuff.drawAll(graphToBack);
+					setBackground(Color.BLACK);
+
+					graphToBack.fillRect(300, 300, 30, 30);
+					graphToBack.drawString("Level 2", 300, 300);
+
+
+				}
+				
+			}
+			
+	}
+		
+		for (int i = 0; i < stuff.returnList().size(); i++)
+		{
+			if (ball.didCollideTop(stuff.returnList().get(i)))
+			{
+				ball.setXSpeed(-ball.getXSpeed());
+				ball.setYSpeed(-ball.getYSpeed());
+				stuff.returnList().get(i).setY(1000);
+				stuff.returnList().remove(i);
+
+				
+
+				if (rightScore == 7)
+				{
+
+
+					
+					int x = 0, y = 0;
+					for(int j = 0; j < 52; j++)
+					{
+						stuff.returnList().add(new Block(x, y, 25, 25, Color.MAGENTA));
+						x = x + 30;
+						if(x > 780)
+						{
+							x = 20;
+							y = y + 50;
+						}
+					}
+					stuff.drawAll(graphToBack);
+					setBackground(Color.BLACK);
+
+					graphToBack.fillRect(300, 300, 30, 30);
+					graphToBack.drawString("Level 2", 300, 300);
+
+				}
+			}		
+				
+			
+	}
+		
+			
+		
+	
+	
+		/*if ((ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getXSpeed()))
+				&& (ball.getY() >= leftPaddle.getY() && ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight()
+						|| ball.getY() + ball.getHeight() >= leftPaddle.getY()
+								&& ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())) {
+			if (ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+				ball.setYSpeed(-ball.getYSpeed());
+			else
+				ball.setXSpeed(-ball.getXSpeed());
+		}*/
+		/*if ((ball.getX() + ball.getWidth() >= rightPaddle.getX() - rightPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+				&& (ball.getY() >= rightPaddle.getY() && ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight()
+						|| ball.getY() + ball.getHeight() >= rightPaddle.getY()
+								&& ball.getY() + ball.getHeight() < rightPaddle.getY() + rightPaddle.getHeight())) {
+			if (ball.getX() + ball.getWidth() <= rightPaddle.getX() - rightPaddle.getWidth()
+					+ Math.abs(ball.getXSpeed()))
+				ball.setYSpeed(-ball.getYSpeed());
+			else
+				ball.setXSpeed(-ball.getXSpeed());
+		}*/
+
+		
+		
+		
+		
+		
+		// see if the paddles need to be moved
+		if (keys[0] == true)
+
+		{
+			// move left paddle up and draw it on the window
+			rightPaddle.moveLeftAndDraw(window);
+		}
+		if (keys[1] == true)
+
+		{
+			// move left paddle down and draw it on the window
+			rightPaddle.moveRightAndDraw(window);
+		}
+		if (keys[2] == true)
+
+		{
+			rightPaddle.moveUpAndDraw(window);
+		}
+		if (keys[3] == true)
+
+		{
+			rightPaddle.moveDownAndDraw(window);
+		}
+
+		twoDGraph.drawImage(back, null, 0, 0);
+
+	}
+	
+
+	public void keyPressed(KeyEvent e)
+	{
+		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			keys[0] = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			keys[1] = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			keys[2] = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			keys[3] = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		{
+			keys[4] = true;
+
+		}
+		repaint();
+	}
+
+	public void keyReleased(KeyEvent e)
+	{
+		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			keys[0] = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			keys[1] = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			keys[2] = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			keys[3] = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		{
+			keys[4] = false;
+		}
+		repaint();
+	}
+
+	public void keyTyped(KeyEvent e) {
+	}
+
+	public void run() {
+		try {
+			while (true) {
+				Thread.currentThread().sleep(8);
+				repaint();
+			}
+		} catch (Exception e) {
+		}
+	}
+}

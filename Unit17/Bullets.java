@@ -18,28 +18,47 @@ public class Bullets
 
 	public Bullets()
 	{
+		ammo = new ArrayList<Ammo>();
+
 	}
 
 	public void add(Ammo al)
 	{
+		ammo.add(al);
 	}
 
-	//post - draw each Ammo
+	
 	public void drawEmAll( Graphics window )
 	{
+		for (int i = 0; i < ammo.size(); i++)
+		{
+			window.setColor(Color.CYAN);
+		   	window.fillRect(ammo.get(i).getX(), ammo.get(i).getY(), 10, 10);
+		}
 	}
 
 	public void moveEmAll()
 	{
+		for (int i = 0; i < ammo.size(); i++)
+		{
+			ammo.get(i).move("UP");
+		}
 	}
 
-	public void cleanEmUp()
+	public void cleanEmUp(Graphics window)
 	{
+		for (int i = 0; i < ammo.size(); i++)
+		{
+			if(ammo.get(i).getY()< 10)
+			{
+				ammo.remove(i);
+			}	
+		}
 	}
 
 	public List<Ammo> getList()
 	{
-		return null;
+		return ammo;
 	}
 
 	public String toString()
